@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gokind
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gokind
+  template:
+    metadata:
+      labels:
+        app: gokind
+    spec:
+      containers:
+      - name: gokind
+        image: localhost:5000/gokind:latest
+        ports:
+        - containerPort: 8081
+        resources:
+          requests:
+            memory: "128Mi"  
+            cpu: "250m"   
+          limits:
+            memory: "1Gi"    
+            cpu: "2"         
